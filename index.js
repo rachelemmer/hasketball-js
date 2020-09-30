@@ -122,3 +122,38 @@ const gameHash = {
         ]
     }
 }
+
+
+function players() {
+    let homePlayers = gameHash.home.players;
+    let awayPlayers = gameHash.away.players;
+    let allPlayers = homePlayers.concat(awayPlayers);
+    return allPlayers;
+}
+
+function getPlayer(playerName) {
+    players().forEach(player => {
+        if (player.playerName == playerName) {
+            return player
+        }
+    })
+}
+
+function shoeSize(playerName) {
+    return getPlayer(playerName).shoe
+}
+
+function teamColors(teamName) {
+    if (gameHash.home.teamName === teamName) {
+        return gameHash.home.colors
+    } else {
+        return gameHash.away.colors
+    }
+}
+
+function teamNames() {
+    return [gameHash.home.teamName, gameHash.away.teamName]
+}
+
+
+console.log(getPlayer("Alan Anderson"))
